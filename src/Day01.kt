@@ -1,5 +1,6 @@
 import kotlin.math.*
 import kotlin.collections.*
+
 fun main() {
     fun part1(input: List<String>): Int {
         var max = 0
