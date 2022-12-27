@@ -78,17 +78,19 @@ fun main() {
     stk9.push("D")
     stk9.push("M")
 
-    fun helper(to: Int, crate: String?) {
+    fun helper(to: Int, crate: String) {
+        println("here $crate")
+        val n = crate.length
         when(to) {
-            1 -> stk1.push(crate)
-            2 -> stk2.push(crate)
-            3 -> stk3.push(crate)
-            4 -> stk4.push(crate)
-            5 -> stk5.push(crate)
-            6 -> stk6.push(crate)
-            7 -> stk7.push(crate)
-            8 -> stk8.push(crate)
-            9 -> stk9.push(crate)
+            1 -> for (i in 0 until n) stk1.push(crate[n-1-i].toString())
+            2 -> for (i in 0 until n) stk2.push(crate[n-1-i].toString())
+            3 -> for (i in 0 until n) stk3.push(crate[n-1-i].toString())
+            4 -> for (i in 0 until n) stk4.push(crate[n-1-i].toString())
+            5 -> for (i in 0 until n) stk5.push(crate[n-1-i].toString())
+            6 -> for (i in 0 until n) stk6.push(crate[n-1-i].toString())
+            7 -> for (i in 0 until n) stk7.push(crate[n-1-i].toString())
+            8 -> for (i in 0 until n) stk8.push(crate[n-1-i].toString())
+            9 -> for (i in 0 until n) stk9.push(crate[n-1-i].toString())
         }
     }
 
@@ -169,15 +171,81 @@ fun main() {
         return res
     }
 
-    fun part2(input: List<String>): Int {
-        return 0
+    fun part2(input: List<String>): String {
+        for (i in input.indices) {
+            var strs = input[i].split(" ")
+            if (strs[0] != "move") continue
+            val move = strs[1].toInt()
+            val from = strs[3].toInt()
+            val to = strs[5].toInt()
+            var crate = ""
+            when (from) {
+                1 -> for (i in 1..move) {
+                    if (stk1.isNotEmpty()) {
+                        crate += stk1.pop()
+                    }
+                }
+                2 -> for (i in 1..move) {
+                    if (stk2.isNotEmpty()) {
+                        crate += stk2.pop()
+                    }
+                }
+                3 -> for (i in 1..move) {
+                    if (stk3.isNotEmpty()) {
+                        crate += stk3.pop()
+                    }
+                }
+                4 -> for (i in 1..move) {
+                    if (stk4.isNotEmpty()) {
+                        crate += stk4.pop()
+                    }
+                }
+                5 -> for (i in 1..move) {
+                    if (stk5.isNotEmpty()) {
+                        crate += stk5.pop()
+                    }
+                }
+                6 -> for (i in 1..move) {
+                    if (stk6.isNotEmpty()) {
+                        crate += stk6.pop()
+                    }
+                }
+                7 -> for (i in 1..move) {
+                    if (stk7.isNotEmpty()) {
+                        crate += stk7.pop()
+                    }
+                }
+                8 -> for (i in 1..move) {
+                    if (stk8.isNotEmpty()) {
+                        crate += stk8.pop()
+                    }
+                }
+                9 -> for (i in 1..move) {
+                    if (stk9.isNotEmpty()) {
+                        crate += stk9.pop()
+                    }
+                }
+            }
+            helper(to, crate)
+        }
+        var res = ""
+        if (stk1.isNotEmpty()) res += stk1.pop()
+        if (stk2.isNotEmpty()) res += stk2.pop()
+        if (stk3.isNotEmpty()) res += stk3.pop()
+        if (stk4.isNotEmpty()) res += stk4.pop()
+        if (stk5.isNotEmpty()) res += stk5.pop()
+        if (stk6.isNotEmpty()) res += stk6.pop()
+        if (stk7.isNotEmpty()) res += stk7.pop()
+        if (stk8.isNotEmpty()) res += stk8.pop()
+        if (stk9.isNotEmpty()) res += stk9.pop()
+        return res
     }
 
     // test if implementation meets criteria from the description, like:
 //    val testInput = readInput("Day05_test")
-//    part1(testInput).println()
+//    part2(testInput).println()
 
     val input = readInput("Day05")
-    part1(input).println()
+//    part1(input).println()
     part2(input).println()
 }
