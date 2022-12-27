@@ -156,15 +156,6 @@ fun main() {
                 }
             }
         }
-        println(stk1)
-        println(stk2)
-        println(stk3)
-        println(stk4)
-        println(stk5)
-        println(stk6)
-        println(stk7)
-        println(stk8)
-        println(stk9)
         var res = ""
         if (stk1.isNotEmpty()) res += stk1.pop()
         if (stk2.isNotEmpty()) res += stk2.pop()
